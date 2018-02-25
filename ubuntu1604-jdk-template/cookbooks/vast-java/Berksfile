@@ -1,0 +1,9 @@
+source "https://supermarket.chef.io"
+metadata
+
+File.open("metadata.rb").readlines.each do |line|
+ if line.match(/^\s*depends/)
+   cookbook_name = line.split(/[",']/)[1]
+   cookbook cookbook_name, path: "../#{cookbook_name}"
+ end
+end

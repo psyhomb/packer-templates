@@ -1,0 +1,59 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-1",
+      "vpc_id": "vpc-43d6d43b",
+      "subnet_id": "subnet-a3b29de8",
+      "source_ami": "ami-66506c1c",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "ubuntu1604-jdk-{{timestamp}}",
+      "ami_description": "Ubuntu 16.04 LTS with JDK AMI",
+      "run_tags": {
+        "Name": "Packer-Builder-{{packer_version}}"
+      },
+      "tags": {
+        "OS_Version": "ubuntu-16.04-lts",
+        "OS_Additions": "jdk",
+        "Owner": "psyhomb",
+        "Build_Name": "packer-{{build_name}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "version": "12.3.0",
+      "cookbook_paths": [
+        "cookbooks"
+      ],
+      "chef_environment": "alpha",
+      "environments_path": "environments",
+      "staging_directory": "/var/chef",
+      "run_list": [
+        "recipe[vast-java]"
+      ],
+      "json": {
+        "java_versions": {
+          "alpha": [
+            "9.0.4"
+          ]
+        }
+      }
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get autoremove --purge -y chef",
+        "sudo rm -rvf /var/chef"
+      ]
+    }
+  ]
+}
