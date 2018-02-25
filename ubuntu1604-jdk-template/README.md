@@ -4,7 +4,7 @@ Ubuntu 16.04 LTS with JDK
 About
 -----
 
-[Packer](https://www.packer.io/docs/index.html) template with [chef-solo](https://docs.chef.io/chef_solo.html) provisioner.
+[Packer](https://www.packer.io/docs/index.html) template with [chef-solo](https://docs.chef.io/chef_solo.html) provisioner that can be used for building AMI images.
 
 Edit
 ----
