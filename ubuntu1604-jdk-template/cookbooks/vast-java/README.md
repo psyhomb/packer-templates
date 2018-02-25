@@ -87,8 +87,3 @@ Include `javaE` role in your node's `run_list`:
   ]
 }
 ```
-
-License and Authors
--------------------
-
-Authors: Milos Buncic
