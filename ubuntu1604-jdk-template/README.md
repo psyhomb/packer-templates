@@ -20,7 +20,7 @@ Replace `<ACCESS_KEY>` and `<SECRET_KEY>` with valid keys of the account with mi
 }
 ```
 
-Also alter all parameters inside [template file](../../ubuntu1604-jdk-template/ubuntu1604-jdk-template.json) according to your needs.
+Also alter all parameters inside [template file](../ubuntu1604-jdk-template/ubuntu1604-jdk-template.json) according to your needs.
 
 Validate
 --------
