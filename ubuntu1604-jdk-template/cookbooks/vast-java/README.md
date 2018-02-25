@@ -77,7 +77,7 @@ Set same version for one or all environments inside the role
     }
 ```
 
-Include `javaE` role in your node's `run_list`:
+Include `javaE` role in node's `run_list`:
 
 ```json
 {
