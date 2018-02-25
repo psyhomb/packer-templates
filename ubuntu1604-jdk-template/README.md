@@ -11,7 +11,7 @@ Edit
 
 Replace `<ACCESS_KEY>` and `<SECRET_KEY>` with valid keys of the account with minimal [permissinos](https://www.packer.io/docs/builders/amazon.html#iam-task-or-instance-role) set necessary for Packer to work.
 
-[secrets.json](../secrets.json)
+[secrets.json](../ubuntu1604-jdk-template/secrets.json)
 
 ```json
 {
