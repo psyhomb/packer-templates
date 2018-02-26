@@ -33,6 +33,11 @@ end
 if !java_versions.nil?
   # Run installation of all java versions defined in java_versions list
   java_versions.each do |version|
+    unless downloads.keys.include?(version)
+      Chef::Log.warn("vast-java: JDK version #{version} not supported, please see 'attributes/default.rb' for supported versions")
+      next
+    end
+
     major = version.split(/u|\./)[0]
     minor = version.split(/u|\./)[1..-1].join('.')
 
@@ -43,7 +48,7 @@ if !java_versions.nil?
                end
 
     vast_java_ark "install-jdk-#{version}" do
-      url        downloads[version]['url'] % {version: version, filename: filename}
+      url        downloads[version]['url'] % { version: version, filename: filename }
       checksum   downloads[version]['checksum']
       app_home   "#{java_home}/latest#{major}"
       action     :install
